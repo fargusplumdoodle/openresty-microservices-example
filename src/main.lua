@@ -2,19 +2,6 @@ local json = require "cjson"
 local auth = require "auth"
 local _M = {}
 
-function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
-end
-
 
 function _M.run()
     local headers = ngx.req.get_headers()

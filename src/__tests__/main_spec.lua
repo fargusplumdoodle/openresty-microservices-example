@@ -1,26 +1,17 @@
-
-
--- define ngx object
-ngx = {
-    say = function(s) end,
-    log = function(type, s) end,
-    req = {
-        get_headers = function() return {} end,
-    },
-    HTTP_OK = 200,
-    HTTP_BAD_REQUEST = 400,
-}
-
--- mock ngx object using busted function
--- store in global var
--- _G.ngx = mock(ngx, false)
-
+local ngx_mock = require 'ngx_mock'
 local main = require "main"
 
 
 describe("auth headers", function()
+
+    before_each(function() 
+        ngx = ngx_mock.get_ngx_mock()
+    end)
+
+
     it("should deny invalid credentials", function()
         ngx.req.get_headers = function() return { ["Authorization"] = "fart" } end
+        ngx.req.a = 'asfd'
         _G.ngx = mock(ngx, false)
 
 
