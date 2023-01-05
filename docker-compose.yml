@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  app:
+    image: "openresty/openresty:bullseye-fat"
+    ports:
+      - 8080:8080
+    volumes:
+      - ./conf:/usr/local/openresty/nginx/conf
+      - ./logs:/usr/local/openresty/nginx/logs
+      - ./src:/usr/local/openresty/nginx/lua

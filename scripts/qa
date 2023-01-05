@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Formatting 
+find ./src -name '*.lua' | xargs luafmt -w replace
+
+# Linting
+luacheck --std busted+ngx_lua ./src
