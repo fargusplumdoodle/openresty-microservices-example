@@ -6,12 +6,6 @@ luarocks init
 ./luarocks build 
 ```
 
-Install openresty:
-  - https://openresty.org/en/download.html
-  - If you are on linux, make sure that the openresty service
-    is not running by default (`sudo systemctl stop openresty`, `sudo systemctl disable openresty`)
-
-
 ## Tests
 
 Run `./lua_modules/bin/busted .`

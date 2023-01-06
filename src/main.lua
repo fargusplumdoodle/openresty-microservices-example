@@ -7,7 +7,7 @@ function _M.run()
     local headers = ngx.req.get_headers()
     local auth_header = headers['Authorization']
 
-    ngx.log(ngx.ERR, "HEADERS:", json.encode(headers))
+    ngx.log(ngx.INFO, "HEADERS:", json.encode(headers))
 
     if auth.check_auth(auth_header) then
         ngx.status = ngx.HTTP_OK
